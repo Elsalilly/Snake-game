@@ -31,7 +31,7 @@ const StartPage = ({ onStart }) => {
 
       <div className="snake-preview">
       {[...Array(7)].map((_, index) => (
-    <div
+      <div
       key={index}
       className="snake-segment"
       style={{ backgroundColor: selectedColor.toLowerCase() }}
@@ -41,7 +41,7 @@ const StartPage = ({ onStart }) => {
 
 
 
-      <button className="login-btn">
+      <button className="login-btn" onClick={handleStart} >
         Continue to login
       </button>
 
