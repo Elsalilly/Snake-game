@@ -23,7 +23,7 @@ const initialState = {
     snakeDots: [[0, 0], [2,0]],
     food: getRandomCoordinates(),
     direction: "RIGHT",
-    speed: 200,
+    speed: 100,
 }
 
 const Game = () => {
@@ -82,14 +82,45 @@ const Game = () => {
             default:
                 break;
         }
+
+        if (checkCollision(head, dots)) {
+            gameOver();
+            return;
+        }
+
         dots.push(head);
-        dots.shift();
+
+        const checkIfEaten = head[0] === food[0] && head[1] === food[1];
+
+        // Check for food collision
+        if (!checkIfEaten) {
+            dots.shift();
+        } else {
+            setFood(getRandomCoordinates());
+        }
         setSnakeDots(dots);
+
+    };
+
+    const checkCollision = (head, body) => {
+        const [x, y] = head; //destrucure the head array
+        const hitWall = x >= 100 || y >= 100 || x < 0 || y < 0; //checks if head outside game area
+        const hitSelf = body.some(dot => dot[0] === x && dot[1] === y);
+    
+        return hitWall || hitSelf;
+    };
+
+    const gameOver = () => {
+        setSnakeDots(initialState.snakeDots);
+        setFood(getRandomCoordinates);
+        setDirection(initialState.direction);
+        setSpeed(initialState.speed);
     };
 
     return (
        <div className="game-area">
         <Snake snakeDots={snakeDots} />
+        <Food dot={food} />
        </div>
     );
 }

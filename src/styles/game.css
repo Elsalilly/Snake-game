@@ -11,6 +11,14 @@ body {
     background-color: beige;
 }
 
+.food {
+    position: absolute;
+    width: 4%;
+    height: 4%;
+    background-color: rgb(171, 20, 20);
+    border-radius: 50%;
+}
+
 .snake {
     position: absolute;
     width: 4%;
