@@ -23,7 +23,7 @@ const initialState = {
     snakeDots: [[0, 0], [2,0]],
     food: getRandomCoordinates(),
     direction: "RIGHT",
-    speed: 100,
+    speed: 200,
 }
 
 const Game = () => {
@@ -31,6 +31,7 @@ const Game = () => {
     const [food, setFood] = useState(initialState.food); //State to track food location 
     const [speed, setSpeed] = useState(initialState.speed); //State to track snake speed
     const [direction, setDirection] = useState(initialState.direction); // State to track direction
+    const [speedLevel, setSpeedLevel] = useState(0);
 
     //Handles keyboard input, snake direction
     useEffect(() => {
@@ -60,7 +61,7 @@ const Game = () => {
         clearInterval(gameInterval);
         document.removeEventListener("keydown", onkeydown);
     };
-}, [snakeDots, direction]);
+}, [snakeDots, direction, speed]);
 
     const moveSnake = () => {
         let dots = [...snakeDots];
@@ -86,7 +87,7 @@ const Game = () => {
         if (checkCollision(head, dots)) {
             gameOver();
             return;
-        }
+        };
 
         dots.push(head);
 
@@ -98,10 +99,16 @@ const Game = () => {
         } else {
             setFood(getRandomCoordinates());
         }
+        // After every 5 eaten speed will increase (first will increase at 3 as length starts at 2)
+        if (dots.length % 5 === 0 && dots.length !== speedLevel && speed >40 ) {
+            setSpeed(prevSpeed => prevSpeed - 20);
+            setSpeedLevel(dots.length);
+        }
+
         setSnakeDots(dots);
 
     };
-
+    // Collison with both self and wall
     const checkCollision = (head, body) => {
         const [x, y] = head; //destrucure the head array
         const hitWall = x >= 100 || y >= 100 || x < 0 || y < 0; //checks if head outside game area
@@ -111,6 +118,7 @@ const Game = () => {
     };
 
     const gameOver = () => {
+        //Reboot
         setSnakeDots(initialState.snakeDots);
         setFood(getRandomCoordinates);
         setDirection(initialState.direction);
@@ -118,10 +126,13 @@ const Game = () => {
     };
 
     return (
-       <div className="game-area">
-        <Snake snakeDots={snakeDots} />
-        <Food dot={food} />
+    <div className="score-board"> 
+        <h1>Score: {snakeDots.length -2}</h1>
+        <div className="game-area">
+            <Snake snakeDots={snakeDots} />
+            <Food dot={food} />
        </div>
+    </div>
     );
 }
 
