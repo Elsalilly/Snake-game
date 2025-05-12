@@ -30,10 +30,7 @@ const StartPage = ({ onStart }) => {
       </div>
 
       <div className="snake-preview">
-      const snakeLength = 7;
-      ...
-      {Array.from({ length: snakeLength }).map((_, index) => (
-
+      {[...Array(7)].map((_, index) => (
       <div
       key={index}
       className="snake-segment"
@@ -53,3 +50,4 @@ const StartPage = ({ onStart }) => {
 };
 
 export default StartPage;
+
