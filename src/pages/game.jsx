@@ -127,7 +127,7 @@ const Game = () => {
 
     return (
     <div className="score-board"> 
-        <h1>Score: {snakeDots.length -2}</h1>
+        <h1 className="score-title">Score: {snakeDots.length -2}</h1>
         <div className="game-area">
             <Snake snakeDots={snakeDots} />
             <Food dot={food} />

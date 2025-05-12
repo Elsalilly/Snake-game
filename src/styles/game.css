@@ -7,7 +7,7 @@ body {
 .game-area {
     position: relative;
     width: 80vmin;
-    height: 80vmin;
+    height: 70vmin;
     border: 4px solid #d66161;
     background-color: beige;
     margin: auto;
@@ -31,3 +31,10 @@ body {
 .score-board, h1 {
     margin-bottom: 2px;
 }
+
+@media screen and (min-width: 300px) and (max-width: 700px) {
+    .score-title {
+        font-size: 30px;
+    }
+}
+
