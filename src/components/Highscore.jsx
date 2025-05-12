@@ -1,0 +1,47 @@
+import React, { useEffect, useState } from "react";
+import './highscore.css'
+
+const HighScore = () => {
+    const [highScores, setHighScores] = useState([]);
+
+    useEffect(() => {
+        //Testkod (kommer ta bort detta när data från inloggning/spel används)
+        if (!localStorage.getItem("userScores")) {
+            const testScores = [
+                { username: "Name1", score: 90 },
+                { username: "Name2", score: 140 },
+                { username: "Name3", score: 115 }
+            ];
+            localStorage.setItem("userScores", JSON.stringify(testScores));
+        }
+        //Testkod (kommer ta bort detta när data från inloggning/spel används)
+  
+        // Hämta poäng från localStorage – ska ändra så att key "userScores" matchar den som används i inloggning
+        const storedScores = JSON.parse(localStorage.getItem("userScores")) || [];
+
+        // Sortera scores
+        const sortScores = storedScores.sort((a, b) => b.score - a.score);
+        setHighScores(sortScores);
+    }, []);
+
+    // "username" och "score" kommer ändras för att matcha det som sparas av spelet/inloggningen
+    return (
+        <div className="high-scores">
+            <h2 className="high-scores__header">The Ssuper Sscorelist</h2>
+            <ol className="high-scores__list">
+                <li className="high-scores__item">
+                    <span className="high-scores__title">User</span>
+                    <span className="high-scores__title">Points</span>
+                </li>
+                {highScores.map((entry, index) => (
+                    <li key={index} className="high-scores__item">
+                        <span className="high-scores__name">{index + 1}. {entry.username}</span>
+                        <span className="high-scores__score">{entry.score} points</span>
+                    </li>
+                ))}
+            </ol>
+        </div>
+    );
+};
+
+export default HighScore;
