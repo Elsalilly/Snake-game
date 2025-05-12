@@ -6,7 +6,7 @@ const StartPage = ({ onStart }) => {
   const [selectedColor, setSelectedColor] = useState('Blue');
 
   const handleStart = () => {
-    onStart(selectedColor.toLowerCase());
+    onStart(selectedColor);
   };
 
   return (
@@ -30,7 +30,10 @@ const StartPage = ({ onStart }) => {
       </div>
 
       <div className="snake-preview">
-      {[...Array(7)].map((_, index) => (
+      const snakeLength = 7;
+      ...
+      {Array.from({ length: snakeLength }).map((_, index) => (
+
       <div
       key={index}
       className="snake-segment"
