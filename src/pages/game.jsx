@@ -3,6 +3,8 @@ import Snake from "../components/snake";
 import Food from "../components/food";
 import HighScore from "../components/Highscore.jsx";
 
+import { playSound } from "../utils/sound.js";
+
 // CSS
 import "../styles/game.css";
 import "../App.css";
@@ -100,6 +102,7 @@ const Game = ({ snakeColor }) => {
             dots.shift();
         } else {
             setFood(getRandomCoordinates());
+            playSound(705735);
         }
         // After every 5 eaten speed will increase (first will increase at 3 as length starts at 2)
         if (dots.length % 5 === 0 && dots.length !== speedLevel && speed >40 ) {
