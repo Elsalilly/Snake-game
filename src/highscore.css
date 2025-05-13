@@ -1,15 +1,15 @@
 .high-scores {
+    margin: 0 auto;
     max-width: 400px;
-    margin: 20px;
     padding: 20px;
-    background-color:#f1e7da;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    color: #726252;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    background-color: beige;
+    font-family: "Poppins", sans-serif;
     text-align: center;
   }
   
   .high-scores__header {
+    color: #389100;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 40px;
