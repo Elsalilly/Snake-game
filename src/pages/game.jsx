@@ -151,7 +151,7 @@ const Game = ({ snakeColor }) => {
         content = (
             <>
                 <HighScore />
-                <button onClick={resetGame}>Play again</button>
+                <button className="play-btn" onClick={resetGame}>Play again</button>
             </>
         );
     }

@@ -17,7 +17,7 @@ const HighScore = () => {
     // "username" och "score" kommer ändras för att matcha det som sparas av spelet/inloggningen
     return (
         <div className="high-scores">
-            <h2 className="high-scores__header">The Ssuper Sscorelist</h2>
+            <h2 className="high-scores__header">Game Over</h2>
             <ol className="high-scores__list">
                 <li className="high-scores__item">
                     <span className="high-scores__title">User</span>
