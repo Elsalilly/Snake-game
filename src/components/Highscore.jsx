@@ -5,16 +5,6 @@ const HighScore = () => {
     const [highScores, setHighScores] = useState([]);
 
     useEffect(() => {
-        //Testkod (kommer ta bort detta när data från inloggning/spel används)
-        if (!localStorage.getItem("userScores")) {
-            const testScores = [
-                { username: "Name1", score: 90 },
-                { username: "Name2", score: 140 },
-                { username: "Name3", score: 115 }
-            ];
-            localStorage.setItem("userScores", JSON.stringify(testScores));
-        }
-        //Testkod (kommer ta bort detta när data från inloggning/spel används)
   
         // Hämta poäng från localStorage – ska ändra så att key "userScores" matchar den som används i inloggning
         const storedScores = JSON.parse(localStorage.getItem("userScores")) || [];
@@ -33,7 +23,7 @@ const HighScore = () => {
                     <span className="high-scores__title">User</span>
                     <span className="high-scores__title">Points</span>
                 </li>
-                {highScores.map((entry, index) => (
+                {highScores.slice(0, 5).map((entry, index) => (
                     <li key={index} className="high-scores__item">
                         <span className="high-scores__name">{index + 1}. {entry.username}</span>
                         <span className="high-scores__score">{entry.score} points</span>

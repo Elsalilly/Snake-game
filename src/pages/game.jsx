@@ -119,6 +119,7 @@ const Game = ({ snakeColor }) => {
         return hitWall || hitSelf;
     };
 
+  
     const gameOver = () => {
         // --------------- Save score to localStorage
         const score = snakeDots.length - 2;
@@ -131,25 +132,44 @@ const Game = ({ snakeColor }) => {
         }
         // --------------- Save score to localStorage
         setShowHighScore(true);
-        //Reboot
-        setSnakeDots(initialState.snakeDots);
-        setFood(getRandomCoordinates);
-        setDirection(initialState.direction);
-        setSpeed(initialState.speed);
-    };
+        
+ };
+        const resetGame = () => { //Reboot
+            setSnakeDots(initialState.snakeDots);
+            setFood(getRandomCoordinates);
+            setDirection(initialState.direction);
+            setSpeed(initialState.speed);
+            setShowHighScore(false);
+        }
+   
+
+    let content;
+    if (showHighScore) {
+        content = (
+            <>
+                <HighScore />
+                <button onClick={resetGame}>Play again</button>
+            </>
+        );
+    }
+    else {
+        content = (
+            <>
+                <div className="game-wrapper">
+                    <h1 className="score-title">Score: {snakeDots.length - 2}</h1>
+                    <div className="game-area">
+                        <Snake snakeDots={snakeDots} snakeColor={snakeColor} />
+                        <Food dot={food} />
+                    </div>
+                </div>
+            </>
+        );
+    }
 
     return (
-    <div className="game-wrapper"> 
-        <h1 className="score-title">Score: {snakeDots.length - 2}</h1>
-        <div className="game-area">
-            <Snake snakeDots={snakeDots} snakeColor={snakeColor} />
-            <Food dot={food} />
-        </div>
-        { showHighScore && (
-            < HighScore />
-        )
-        }
-    </div>
+            <div>
+            {content} 
+            </div>
     );
 }
 
