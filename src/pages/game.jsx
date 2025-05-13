@@ -1,6 +1,7 @@
 //Components
 import Snake from "../components/snake";
 import Food from "../components/food";
+import HighScore from "../components/Highscore.jsx";
 
 // CSS
 import "../styles/game.css";
@@ -32,6 +33,7 @@ const Game = ({ snakeColor }) => {
     const [speed, setSpeed] = useState(initialState.speed); //State to track snake speed
     const [direction, setDirection] = useState(initialState.direction); // State to track direction
     const [speedLevel, setSpeedLevel] = useState(0);
+    const [showHighScore, setShowHighScore] = useState(false);
 
     //Handles keyboard input, snake direction
     useEffect(() => {
@@ -118,6 +120,17 @@ const Game = ({ snakeColor }) => {
     };
 
     const gameOver = () => {
+        // --------------- Save score to localStorage
+        const score = snakeDots.length - 2;
+        const username = "Testnamn"; // User from login
+
+        if (score > 0) {
+            const storedScores = JSON.parse(localStorage.getItem("userScores")) || [];
+            const updatedScores = [...storedScores, { username, score }];
+            localStorage.setItem("userScores", JSON.stringify(updatedScores));
+        }
+        // --------------- Save score to localStorage
+        setShowHighScore(true);
         //Reboot
         setSnakeDots(initialState.snakeDots);
         setFood(getRandomCoordinates);
@@ -127,11 +140,15 @@ const Game = ({ snakeColor }) => {
 
     return (
     <div className="game-wrapper"> 
-        <h1 className="score-title">Score: {snakeDots.length -2}</h1>
+        <h1 className="score-title">Score: {snakeDots.length - 2}</h1>
         <div className="game-area">
             <Snake snakeDots={snakeDots} snakeColor={snakeColor} />
             <Food dot={food} />
-       </div>
+        </div>
+        { showHighScore && (
+            < HighScore />
+        )
+        }
     </div>
     );
 }
