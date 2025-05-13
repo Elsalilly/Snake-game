@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/game.css";
 
-const Snake = ({ snakeDots }) => {
+const Snake = ({ snakeDots, snakeColor }) => {
 {/* Loop through each coordinate in snakeDots array -> renders a square + coordinates in %*/}
     return (
         <div>
@@ -9,6 +9,7 @@ const Snake = ({ snakeDots }) => {
                 const style = {
                     left: `${dot[0]}%`, //horizontal positon
                     top: `${dot[1]}%`, //vertical position
+                    backgroundColor: snakeColor, //Use the passed color
                 };
             return ( 
             <div 

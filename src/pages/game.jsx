@@ -1,10 +1,10 @@
 //Components
 import Snake from "../components/snake";
 import Food from "../components/food";
-import Buttons from "../components/buttons";
 
 // CSS
 import "../styles/game.css";
+import "../App.css";
 
 //React and useState
 import React, { useEffect, useState } from "react";
@@ -26,7 +26,7 @@ const initialState = {
     speed: 200,
 }
 
-const Game = () => {
+const Game = ({ snakeColor }) => {
     const [snakeDots, setSnakeDots] = useState(initialState.snakeDots); //State to track snake's position
     const [food, setFood] = useState(initialState.food); //State to track food location 
     const [speed, setSpeed] = useState(initialState.speed); //State to track snake speed
@@ -126,10 +126,10 @@ const Game = () => {
     };
 
     return (
-    <div className="score-board"> 
+    <div className="game-wrapper"> 
         <h1 className="score-title">Score: {snakeDots.length -2}</h1>
         <div className="game-area">
-            <Snake snakeDots={snakeDots} />
+            <Snake snakeDots={snakeDots} snakeColor={snakeColor} />
             <Food dot={food} />
        </div>
     </div>
