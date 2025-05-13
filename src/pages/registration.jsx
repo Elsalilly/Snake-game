@@ -27,7 +27,7 @@ function Registration() {
 
     return (
         <div>
-            <h2>Register for access to lots of fun games!</h2>
+            <h2>Register for access to Ssnake Game!</h2>
             <p>OBS! Detta är inte en riktig inloggningssida, det är en övning i lokalt lagrande av data och jag kan se dina sparade data. </p>
             <p>Så, använd INTE ett lösenord som du har någon annanstans också. </p>
             

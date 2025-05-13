@@ -2,29 +2,30 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
 function Login() {
     const users = JSON.parse(localStorage.getItem('user'));
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginUserPassword, setLoginUserPassword] = useState("");
-    const [userList, setUserList] = useState([]);
-    const [filteredUsers, setFilteredUsers] = useState(users);
+    const [verified, setVerified] = useState(false);
 
     const verifyUser = () => {
-
-        const loginUser = {
-            username: loginUsername,
-            userPassword: loginUserPassword,
-        };
-  
-        if ((users.filter(user => user.username.includes(loginUsername))) 
-            && (users.filter(user => user.userPassword.includes(loginUserPassword)))) {
-            return (
-            <button><Link to='/simplefun'>Simple Fun!</Link></button>);
+        //filters the users array from local storage. If there is a match, 
+        // the will be an object in the array result and length.result will be (at least) 1
+        let result = users.filter(({username,userPassword}) => [loginUserPassword].includes(userPassword) && username == loginUsername);
+        console.log(result);
+        
+        if (result.length > 0) {
+            setVerified(true);
         } else {
-            return (
-            <h3>Wrong username and/or password</h3>)
-        };
+            setVerified(false);
+        }; 
+        console.log(verified);
+
+        //clears the input fields
+        setLoginUsername("");
+        setLoginUserPassword("");
     };
 
     return (
@@ -35,9 +36,17 @@ function Login() {
             <input type="text" minLength={1} value={loginUserPassword} placeholder="your password" 
             onChange={(e) => setLoginUserPassword(e.target.value)}/>
             <button onClick={verifyUser}>Log In</button>
+            
+            {verified && (
+                <div>
+                    <button><Link to='/simplefun'>Simple Fun!</Link></button>
+                </div>
+            )}
+            {!verified && (
+                <h3>Wrong username and/or password</h3>
+            )}
         </div>
     );
-
 };
 
 export default Login;
