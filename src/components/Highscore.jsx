@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../highscore.css";
+import "../styles/highscore.css";
 
 const HighScore = () => {
     const [highScores, setHighScores] = useState([]);
