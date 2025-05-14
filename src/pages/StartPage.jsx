@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const colors = ['Blue', 'Orange', 'Red', 'Purple'];
+const colors = ['Blue', 'Green', 'Red', 'Purple'];
 
-const StartPage = ({ onStart }) => {
+const StartPage = () => {
   const [selectedColor, setSelectedColor] = useState('Blue');
+  const navigate = useNavigate();
 
   const handleStart = () => {
-    onStart(selectedColor);
+    navigate('/registration');
   };
 
   return (

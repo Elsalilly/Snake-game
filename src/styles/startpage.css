@@ -6,8 +6,8 @@
     height: 100vh;
     /*font-family: "VT323", monospace;*/
     font-family: "Poppins", sans-serif;
-    background-color: #e0ffd3;
-    color: #389100;
+    background-color: beige;
+    color: #d66161;
   }
   
   .start-container h1{
@@ -17,7 +17,7 @@
   }
   
   .login-btn{
-    background-color: #389100;
+    background-color: #d66161;
     color: #ffffff;
     margin: 20px;
     padding: 15px;
@@ -47,16 +47,16 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #389100;
+    color: #3a3a3a;
     padding-bottom: 5px;
   }
   
   .color-option-btn.selected{
-    border-bottom: 3px solid #510073;
+    border-bottom: 3px solid #d66161;
   }
   
 .color-option-btn:hover{
-    color: #510073;
+    color: #d66161;
 }
 
 .snake-preview {

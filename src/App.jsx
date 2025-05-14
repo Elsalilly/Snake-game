@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import StartPage from './pages/StartPage';
-import Game from "./pages/game";
+import Login from './pages/login';
+import Registration from './pages/registration';
+import Game from './pages/game';
 
-const App = () => {
-  const [snakeColor, setSnakeColor] = useState(null);
-  const handleStart = (selectedColor) => {
-    setSnakeColor(selectedColor.toLowerCase()); //Normalize the color. Convert the string to lowercase for consitency
-  };
-
+function App() {
   return (
-    <div>
-      {snakeColor ? (
-        <Game snakeColor={snakeColor} /> //Renders only after a color is chosen
-      ) : (
-        <StartPage onStart={handleStart} />
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<StartPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
