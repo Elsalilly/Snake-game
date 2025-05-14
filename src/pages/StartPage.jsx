@@ -8,6 +8,7 @@ const StartPage = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
+    localStorage.setItem('selectedColor', selectedColor.toLowerCase());
     navigate('/registration');
   };
 

@@ -30,7 +30,8 @@ const initialState = {
     speed: 200,
 }
 
-const Game = ({ snakeColor }) => {
+const Game = () => {
+    const snakeColor = localStorage.getItem('selectedColor') || 'blue';
     const [snakeDots, setSnakeDots] = useState(initialState.snakeDots); //State to track snake's position
     const [food, setFood] = useState(initialState.food); //State to track food location 
     const [speed, setSpeed] = useState(initialState.speed); //State to track snake speed
