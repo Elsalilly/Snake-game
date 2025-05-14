@@ -7,7 +7,12 @@ const StartPage = () => {
   const [selectedColor, setSelectedColor] = useState('Blue');
   const navigate = useNavigate();
 
-  const handleStart = () => {
+  const handleLogin = () => {
+    localStorage.setItem('selectedColor', selectedColor.toLowerCase());
+    navigate('/login');
+  };
+
+  const handleRegistration = () => {
     localStorage.setItem('selectedColor', selectedColor.toLowerCase());
     navigate('/registration');
   };
@@ -41,14 +46,17 @@ const StartPage = () => {
     ></div>
   ))}
 </div>
-
-
-
-      <button className="login-btn" onClick={handleStart} >
-        Continue to login
+        
+    <div className='login-btns'>
+      <button className="login-btn" onClick={handleLogin}>
+        Have an account? Go to login
       </button>
 
+      <button className="login-btn" onClick={handleRegistration}>
+        Register new account
+      </button>
     </div>
+  </div>
   );
 };
 
