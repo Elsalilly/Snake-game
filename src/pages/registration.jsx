@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "../styles/registration.css";
 
 function Registration() {
     
@@ -23,20 +24,24 @@ function Registration() {
         localStorage.setItem("user", JSON.stringify(userList));
         setNewUsername("");
         setNewUserPassword("");
+
     };
 
     return (
-        <div>
-            <h2>Register for access to Ssnake Game!</h2>
-            <p>OBS! Detta är inte en riktig inloggningssida, det är en övning i lokalt lagrande av data och jag kan se dina sparade data. </p>
-            <p>Så, använd INTE ett lösenord som du har någon annanstans också. </p>
+        <div className="start-container">
+            <h2>Register for access to Snake Game!</h2>
+            <p>First you have to register an account, then you can log in and play.</p>
             
             <input type="text" minLength={1} value={newUsername} placeholder="Choose your username" 
             onChange={(e) => setNewUsername(e.target.value)}/>
+            <br />
             <input type="text" minLength={1} value={newUserPassword} placeholder="Choose your password" 
             onChange={(e) => setNewUserPassword(e.target.value)}/>
-            <button onClick={addUser}>Register Account</button>
-            <button><Link to='/login'>Log In</Link></button>
+            <br />
+            <button className="login-btn" onClick={addUser}>Register Account</button>
+            <br />
+            <p>If you already have an account, go directly to log in. </p>
+            <button className="login-btn"><Link to='/login'>Log In</Link></button>
         </div>
     );
 };

@@ -1,0 +1,22 @@
+/*styles for login.jsx*/
+.start-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /*font-family: "VT323", monospace;*/
+    font-family: "Poppins", sans-serif;
+    background-color: beige;
+    color: #d66161;
+  }
+
+.login-btn{
+    background-color: #d66161;
+    color: #ffffff;
+    margin: 10px;
+    padding: 15px;
+    border: none;
+    transition: 0.2s;
+  
+  }

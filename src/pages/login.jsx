@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/login.css";
 
 function Login() {
     const users = JSON.parse(localStorage.getItem('user'));
@@ -30,22 +30,27 @@ function Login() {
     };
 
     return (
-        <div>
-            <h2>Log in to your account for access to lots of fun games!</h2>
+        <div className="start-container">
+            <h2 className="h2-login">Log in to your account for access to Snake Game!</h2>
             <input type="text" minLength={1} value={loginUsername} placeholder="your username" 
             onChange={(e) => setLoginUsername(e.target.value)}/>
+            <br />
             <input type="text" minLength={1} value={loginUserPassword} placeholder="your password" 
             onChange={(e) => setLoginUserPassword(e.target.value)}/>
-            <button onClick={verifyUser}>Log In</button>
-            
+            <br />
+            <button className="login-btn" onClick={verifyUser}>Log In</button>
+
             {verified && (
                 <div>
-                    <button><Link to='/game'>Simple Fun!</Link></button>
+                    <button className="login-btn"><Link to='/game'>Let's play Snake!</Link></button>
                 </div>
             )}
             {!verified && (
-                <h3>Wrong username and/or password</h3>
+                <h3>Log in with your username and password</h3>
             )}
+            <p>Do you have problems with logging in to your account? Go back and create a new account instead. </p>
+            <button className="login-btn"><Link to='/registration'>Register a new account</Link></button>
+
         </div>
     );
 };
