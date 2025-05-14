@@ -18,5 +18,24 @@
     padding: 15px;
     border: none;
     transition: 0.2s;
-  
+  }
+
+  .link-text {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  input {
+    border: 2px solid #d66161;
+    border-radius: 10px;
+    outline:none;
+    font-size: 16px;
+    background-color: #fff8f0;
+    color: #333;
+    transition: border-color 0.3 ease, box-shadow 0.3 ease;
+    padding: 12px 16px;
+  }
+
+  input:hover {
+    background-color: #f5eee6;
   }
