@@ -25,7 +25,7 @@ const HighScore = () => {
     }, []);
 
    
-    return (
+    return ( 
         <div className="high-scores">
             <h2 className="high-scores__header">Game Over</h2>
             <ol className="high-scores__list">

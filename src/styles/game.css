@@ -51,15 +51,17 @@ body {
 }
 
 .play-btn {
-    background-color: #389100;
-    color: #ffffff;
+    background-color: beige;
+    color: #d66161;
     margin: 0 auto;
     padding: 15px;
     margin-top: 10px;
     border: none;
+    font-weight: 700;
     min-width: 200px;
     transition: 0.2s;
     text-transform: uppercase;
+    border-radius: 10px;
 }
 
   .play-btn:hover{
