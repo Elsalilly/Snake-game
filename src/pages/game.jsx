@@ -12,6 +12,7 @@ import "../App.css";
 
 //React and useState
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 //Random food coordinates so it's within game grid 
 const getRandomCoordinates = () => {
@@ -39,6 +40,7 @@ const Game = () => {
     const [speedLevel, setSpeedLevel] = useState(0);
     const [showHighScore, setShowHighScore] = useState(false);
     const gameOverSoundRef = useRef(false);
+    const navigate = useNavigate();
 
     let gameOverSound = false;
 
@@ -163,7 +165,10 @@ const Game = () => {
         content = (
             <>
                 <HighScore />
+                <div className="btn-container">
                 <button className="play-btn" onClick={resetGame}>Play again</button>
+                <button className="play-btn" onClick={() => navigate("/")}>Back to Start</button>
+                </div>
             </>
         );
     }
