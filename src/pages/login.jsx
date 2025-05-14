@@ -18,6 +18,7 @@ function Login() {
         
         if (result.length > 0) {
             setVerified(true);
+            localStorage.setItem("activeUser", JSON.stringify(result[0])); // --- Add activeUser to localStorage
         } else {
             setVerified(false);
         }; 
@@ -39,7 +40,7 @@ function Login() {
             
             {verified && (
                 <div>
-                    <button><Link to='/simplefun'>Simple Fun!</Link></button>
+                    <button><Link to='/game'>Simple Fun!</Link></button>
                 </div>
             )}
             {!verified && (

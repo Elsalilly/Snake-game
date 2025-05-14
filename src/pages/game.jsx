@@ -131,7 +131,8 @@ const Game = () => {
     const gameOver = () => {
         // --------------- Save score to localStorage
         const score = snakeDots.length - 2;
-        const username = "Testnamn"; // User from login
+        const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+        const username = activeUser?.username;
 
         if (!gameOverSoundRef.current) {
             playSound(159408);
