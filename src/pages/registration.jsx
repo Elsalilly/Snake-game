@@ -9,7 +9,9 @@ function Registration() {
     const [newUserPassword, setNewUserPassword] = useState("");
     const [userList, setUserList] = useState([]);
 
-    localStorage.setItem("user", JSON.stringify(userList));
+    // localStorage.setItem("user", JSON.stringify(userList));
+    // Tar bort denna rad eftersom den försöker spara användarlistan innan den ens fyllts 
+    // med några användare. (Detta resulterade i att gamla användare skrevs över av en tom lista).
 
     const addUser = () => {
         
@@ -18,10 +20,16 @@ function Registration() {
             userPassword: newUserPassword,
         };
 
-        setUserList(l => ([...l ,newUser]));
+         // Hämtar den senaste användarlistan från localStorage (den är tom om det inte finns registrerade användare än)
+        const existingUsers = JSON.parse(localStorage.getItem("user")) || []; 
+
+        // Lägger in nya användaren till den befintliga listan.
+        const updatedUsers = [...existingUsers, newUser];
+
+        setUserList(updatedUsers); // Uppdaterar userList *ändrat från (l => ([...l ,newUser])) till (updatedUsers)*
         
-        console.log(newUser);
-        localStorage.setItem("user", JSON.stringify(userList));
+        // console.log(newUser);
+        localStorage.setItem("user", JSON.stringify(updatedUsers)); // Ändrat från userList till updatedUsers här så att den uppdaterade användarlistan är i localStorage
         setNewUsername("");
         setNewUserPassword("");
 
